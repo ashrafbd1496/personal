@@ -54,10 +54,9 @@ function personal_setup() {
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus(
 		array(
-			'main-menu' => esc_html__( 'Primary', 'personal' ),
+			'main-menu' => esc_html__( 'Main Menu', 'personal' ),
 		)
 	);
-
 	/*
 		* Switch default core markup for search form, comment form, and comments
 		* to output valid HTML5.
@@ -162,7 +161,18 @@ require get_template_directory() . '/inc/template-functions.php';
  * Customizer additions.
  */
 require get_template_directory() . '/inc/customizer.php';
-
+/**
+ * Register Custom Navigation Walker
+ */
+function register_navwalker(){
+	require_once get_template_directory() . '/inc/class-wp-bootstrap-navwalker.php';
+}
+add_action( 'after_setup_theme', 'register_navwalker' );
+//add active class into nav item
+add_filter('nav_menu_css_class' , 'special_nav_class' , 10 , 2); function
+special_nav_class($classes, $item){ if( in_array
+('current-menu-item', $classes) ){ $classes[] = 'active '; } return
+$classes; }
 /**
  * Load Jetpack compatibility file.
  */

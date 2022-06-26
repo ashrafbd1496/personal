@@ -32,14 +32,15 @@
       <h2>I'm a passionate <span>WordPress Developer</span> from Bangladesh</h2>
 
       <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="nav-link active" href="#header">Home</a></li>
-          <li><a class="nav-link" href="#about">About</a></li>
-          <li><a class="nav-link" href="#resume">Resume</a></li>
-          <li><a class="nav-link" href="#services">Services</a></li>
-          <li><a class="nav-link" href="#portfolio">Portfolio</a></li>
-          <li><a class="nav-link" href="#contact">Contact</a></li>
-        </ul>
+        <?php 
+           wp_nav_menu( array(
+            'theme_location'  => 'main-menu',
+            'depth'           => 2, // 1 = no dropdowns, 2 = with dropdowns.
+            'fallback_cb'     => 'WP_Bootstrap_Navwalker::fallback',
+            'walker'          => new WP_Bootstrap_Navwalker(),
+        ) );
+        ?>
+
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 

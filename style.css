@@ -19,11 +19,3 @@ Personal is based on Underscores https://underscores.me/, (C) 2012-2020 Automatt
 Underscores is distributed under the terms of the GNU GPL v2 or later.
 
 */
-body {
-  background-color: #000000 !important;
-  background: #000000 !important;
-}
-body::before {
-  background: #00000 url("../img/banner.png") top right no-repeat;
-
-}
