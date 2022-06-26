@@ -32,10 +32,10 @@ class Personal_Enqueue_Scripts {
 		// Add custom fonts, used in the main stylesheet.
 		//wp_enqueue_style( 'personal-fonts', lprd_fonts_url(), [], null );
 
-		// Theme stylesheet.
-		wp_enqueue_style( 'personal-theme-style', get_stylesheet_uri(), [], _S_VERSION );
 		// Add main stylesheet
 		wp_enqueue_style( 'personal-template-style', get_template_directory_uri() . '/assets/css/style.css', [], _S_VERSION );
+			// Theme stylesheet.
+		wp_enqueue_style( 'personal-theme-style', get_stylesheet_uri(), [], _S_VERSION );
 
 		// Add responsive stylesheet
 		// wp_enqueue_style( 'personal-responsive', get_template_directory_uri() . '/assets/css/responsive.css', [], null );
