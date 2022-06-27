@@ -143,6 +143,10 @@ add_action( 'widgets_init', 'personal_widgets_init' );
  */
 require get_template_directory() . '/inc/personal-enqueue-scripts.php';
 /**
+ * ACF options
+ */
+require get_template_directory() . '/inc/acf-options.php';
+/**
  * Implement the Custom Header feature.
  */
 require get_template_directory() . '/inc/custom-header.php';
@@ -169,10 +173,12 @@ function register_navwalker(){
 }
 add_action( 'after_setup_theme', 'register_navwalker' );
 //add active class into nav item
-add_filter('nav_menu_css_class' , 'special_nav_class' , 10 , 2); function
-special_nav_class($classes, $item){ if( in_array
-('current-menu-item', $classes) ){ $classes[] = 'active '; } return
-$classes; }
+add_filter('nav_menu_css_class' , 'special_nav_class' , 10 , 2); 
+
+function special_nav_class($classes, $item){ 
+	if( in_array('current-menu-item', $classes) ){ $classes[] = 'active '; }
+	return $classes; 
+}
 /**
  * Load Jetpack compatibility file.
  */
@@ -180,3 +186,5 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+//hide acf custom field menu
+add_filter('acf/settings/show_admin', '__return_false'); 
