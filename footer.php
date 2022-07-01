@@ -13,7 +13,7 @@
 
 	<footer id="colophon" class="site-footer">
 		  <div class="credits">
-		    Developed by <a href="https://ashrafbd.com/">Ashraf</a>
+		    Developed by <a href="<?php the_field( 'developer_link', 'option' ); ?>"><?php the_field( 'developer_name', 'option' ); ?></a>
 		  </div>
 	</footer><!-- #colophon -->
 

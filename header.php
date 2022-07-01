@@ -26,10 +26,10 @@
   <header id="header">
     <div class="container">
 
-      <h1><a href="<?php home_url(); ?>">Ashraf Uddin</a></h1>
+      <h1><a href="<?php home_url(); ?>"><?php the_field( 'title', 'option' ); ?></a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a> -->
-      <h2>I'm a passionate <span>WordPress Developer</span> from Bangladesh</h2>
+      <h2><?php the_field( 'description', 'option' ); ?></h2>
 
       <nav id="navbar" class="navbar">
         <?php 
@@ -40,16 +40,19 @@
             'walker'          => new WP_Bootstrap_Navwalker(),
         ) );
         ?>
-
+        
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
       <div class="social-links">
-        <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
-      </div>
+        <?php if ( have_rows( 'social_media', 'option' ) ) : ?>
+        <?php while ( have_rows( 'social_media', 'option' ) ) : the_row(); ?>
+            <a href="<?php the_sub_field( 'icon_url' ); ?>" class="twitter"><?php the_sub_field( 'social_icon' ); ?></a>     
+        <?php endwhile; ?>
+      <?php else : ?>
+        <?php // no rows found ?>
+      <?php endif; ?>
+    </div>
 
     </div>
   </header><!-- End Header -->
