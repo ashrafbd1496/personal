@@ -19,3 +19,7 @@ Personal is based on Underscores https://underscores.me/, (C) 2012-2020 Automatt
 Underscores is distributed under the terms of the GNU GPL v2 or later.
 
 */
+
+.interests .icon-box i{
+	color: #18d26e;
+}
