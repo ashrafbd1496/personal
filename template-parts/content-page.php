@@ -135,28 +135,25 @@
     </div><!-- End Skills -->
 
     <!-- ======= Interests ======= -->
+     <?php if ( have_rows( 'about_interests_items', 'option' ) ) : ?>
     <div class="interests container">
-
       <div class="section-title">
         <h2>Interests</h2>
       </div>
-
       <div class="row">
-        <?php if ( have_rows( 'about_interests_items', 'option' ) ) : ?>
           <?php while ( have_rows( 'about_interests_items', 'option' ) ) : the_row(); ?>
         <div class="col-lg-3 col-md-4 mt-4 mt-md-4">
           <div class="icon-box">
-           <?php the_sub_field( 'interests_item_icon' ); ?>
+            <i class="fa <?php the_sub_field( 'interests_item_icon' ); ?>" style="color:  <?php the_sub_field( 'interests_icon_color' ); ?>"></i>
             <h3><?php the_sub_field( 'interests_item_name' ); ?></h3>
           </div>
         </div>
        <?php endwhile; ?>
         <?php else : ?>
           <?php // no rows found ?>
-        <?php endif; ?>
       </div>
-
     </div><!-- End Interests -->
+  <?php endif; ?>
 
     <!-- ======= Testimonials ======= -->
     <div class="testimonials container">
