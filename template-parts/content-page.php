@@ -192,3 +192,54 @@
     <?php endif; ?>
 
   </section><!-- End About Section -->
+
+    <!-- ======= Resume Section ======= -->
+  <section id="resume" class="resume">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Resume</h2>
+        <p><?php the_field( 'resume_section', 'option' ); ?></p>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-6">
+          <h3 class="resume-title"><?php the_field( 'summery_block_name', 'option' ); ?></h3>
+          <div class="resume-item pb-0">
+            <h4><?php the_field( 'summery_block_title', 'option' ); ?></h4>
+           <?php the_field( 'summery_block_description', 'option' ); ?>
+          </div>
+
+          <?php if ( have_rows( 'other_blocks', 'option' ) ) : ?>
+              <h3 class="resume-title">EDUCATION</h3>
+            <?php while ( have_rows( 'other_blocks', 'option' ) ) : the_row(); ?>
+              <div class="resume-item">
+                <h4><?php the_sub_field( 'block_title' ); ?></h4>
+                <h5><?php the_sub_field( 'block_year' ); ?></h5>
+                <?php the_sub_field( 'block_description' ); ?>
+              </div>
+            <?php endwhile; ?>
+          <?php else : ?>
+            <?php // no rows found ?>
+          <?php endif; ?>
+        </div>
+        <div class="col-lg-6">
+          <?php if ( have_rows( 'professional_experience_block', 'option' ) ) : ?>
+             <h3 class="resume-title">Professional Experience</h3>
+            <?php while ( have_rows( 'professional_experience_block', 'option' ) ) : the_row(); ?>
+                <div class="resume-item">
+                  <h4><?php the_sub_field( 'pe_title' ); ?></h4>
+                  <h5><?php the_sub_field( 'pe__year' ); ?></h5>
+                 <?php the_sub_field( 'pe_description' ); ?>
+                </div>
+        <?php endwhile; ?>
+          <?php else : ?>
+            <?php // no rows found ?>
+              <?php endif; ?>
+        </div>
+      </div>
+
+    </div>
+  </section><!-- End Resume Section -->
+
+  
