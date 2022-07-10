@@ -242,4 +242,31 @@
     </div>
   </section><!-- End Resume Section -->
 
-  
+    <!-- ======= Services Section ======= -->
+
+  <section id="services" class="services">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Services</h2>
+        <p><?php the_field( 'service_section_title', 'option' ); ?></p>
+      </div>
+
+      <div class="row">
+        <?php if ( have_rows( 'service_items', 'option' ) ) : ?>
+          <?php while ( have_rows( 'service_items', 'option' ) ) : the_row(); ?>
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+              <div class="icon-box">
+                <div class="icon"><?php the_sub_field( 'service_icon' ); ?></div>
+                <h4><a href=""><?php the_sub_field( 'service_item_title' ); ?></a></h4>
+               <?php the_sub_field( 'service_item_desc' ); ?>
+              </div>
+            </div>
+          <?php endwhile; ?>
+        <?php else : ?>
+          <?php // no rows found ?>
+        <?php endif; ?>
+      </div>
+
+    </div>
+  </section><!-- End Services Section -->
