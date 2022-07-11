@@ -18,12 +18,11 @@ if (home_url() == 'http://localhost/personal') {
 // }
 
 /**
- * Sets up theme defaults and registers support for various WordPress features.
- *
- * Note that this function is hooked into the after_setup_theme hook, which
- * runs before the init hook. The init hook is too late for some features, such
- * as indicating support for post thumbnails.
+ * Portfolio post type Created
  */
+require get_template_directory() . '/inc/portfolio-post-type.php';
+
+
 function personal_setup() {
 	/*
 		* Make theme available for translation.
@@ -50,6 +49,7 @@ function personal_setup() {
 		* @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 		*/
 	add_theme_support( 'post-thumbnails' );
+	add_image_size( 'single-post-thumbnail', 453, 340 );
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus(
