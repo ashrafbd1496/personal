@@ -267,3 +267,83 @@
     </div>
   </section><!-- End Services Section -->
 
+  <!-- ======= Portfolio Section ======= -->
+  <section id="portfolio" class="portfolio">
+    <div class="container">
+      <div class="section-title">
+        <h2>Portfolio</h2>
+        <p>My Works</p>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-12 d-flex justify-content-center">
+          <ul id="portfolio-flters">
+          <li data-filter="*" class="filter-active">All</li>
+
+          <?php
+          $terms = get_terms(
+            array(
+              'taxonomy'  => 'portfolio_category',
+              'hide_empty'  =>true,
+            )
+          );
+        if (! empty($terms) || is_array($terms)){
+        foreach( $terms as $term ) { ?>
+           <li data-filter=".<?php echo $term->name; ?>"><?php echo  sanitize_title($term->name); ?></li>
+        <?php }} 
+        wp_reset_postdata();
+        ?>
+            </ul>
+        </div>
+      </div>
+
+      <div class="row portfolio-container">
+
+        <?php 
+          $args = array(
+            'post_type' => 'portfolio',
+            'post_status' => 'publish',
+            'posts_per_page'  => 6,
+            'order' => 'ASC',
+          );
+
+          $prt_items = new WP_Query($args);
+
+          while ($prt_items->have_posts()) : $prt_items->the_post();
+            $filter = "";
+            $categories = get_the_terms($post->ID, 'portfolio_category');
+            foreach($categories as $category){
+              $filter =  $category->name; 
+            }
+           ?>
+        <div class="col-lg-4 col-md-6 portfolio-item <?php echo $filter; ?>">
+          <div class="portfolio-wrap">
+            <?php
+             $img_url = get_the_post_thumbnail_url($post->ID, 'post-thumbnails'); 
+             ?>
+            <img src="<?php echo $img_url;  ?>" class="img-fluid" alt="">
+
+            <div class="portfolio-info">
+              <h4><?php the_title(); ?></h4>
+              <p>
+              <?php 
+                $categories = get_the_terms($post->ID, 'portfolio_category');
+                foreach($categories as $category){
+                  echo sanitize_title($category->name). "<br>"; 
+                }
+               ?></p>
+              <div class="portfolio-links">
+                <a href="<?php echo $img_url; ?>" data-gallery="portfolioGallery" class="portfolio-lightbox" title="<?php the_title(); ?>"><i class="bx bx-plus"></i></a>
+                <a href="<?php the_permalink(); ?>" data-gallery="portfolioDetailsGallery" data-glightbox="type: external" class="portfolio-details-lightbox" title="Portfolio Details"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      <?php endwhile; 
+       wp_reset_postdata();
+      ?>
+     
+      </div>
+
+    </div>
+  </section><!-- End Portfolio Section -->

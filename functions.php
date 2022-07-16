@@ -48,8 +48,12 @@ function personal_setup() {
 		*
 		* @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 		*/
-	add_theme_support( 'post-thumbnails' );
-	add_image_size( 'single-post-thumbnail', 453, 340 );
+	add_theme_support('post-thumbnails',array('post','portfolio'));
+	add_image_size( 'single-post-thumbnail', 800, 800, true );
+	add_image_size( 'category-thumb', 800, 800, true );
+	
+
+	//set_post_thumbnail_size( 50, 50 );
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus(
