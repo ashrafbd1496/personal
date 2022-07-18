@@ -23,23 +23,22 @@ get_header();
         <div class="row">
 
           <div class="col-lg-8">
-            <h2 class="portfolio-title">This is an example of portfolio detail</h2>
+            <h2 class="portfolio-title"><?php the_title(); ?></h2>
 
             <div class="portfolio-details-slider swiper">
               <div class="swiper-wrapper align-items-center">
-
-                <div class="swiper-slide">
-                  <img src="assets/img/portfolio/portfolio-details-1.jpg" alt="">
-                </div>
-
-                <div class="swiper-slide">
-                  <img src="assets/img/portfolio/portfolio-details-2.jpg" alt="">
-                </div>
-
-                <div class="swiper-slide">
-                  <img src="assets/img/portfolio/portfolio-details-3.jpg" alt="">
-                </div>
-
+              	<?php $portfolio_slider__images = get_field( 'portfolio_slider_' ); ?>
+				<?php if ( $portfolio_slider__images ) :  ?>
+					<?php foreach ( $portfolio_slider__images as $portfolio_slider__image ): ?>
+						<div class="swiper-slide">
+                 
+						<a href="<?php echo esc_url( $portfolio_slider__image['url'] ); ?>">
+							<img class="img-fluid" src="<?php echo esc_url( $portfolio_slider__image['sizes']['prtslide-thumb'] ); ?>" alt="<?php echo esc_attr( $portfolio_slider__image['alt'] ); ?>" />
+						</a>
+						<p><?php echo esc_html( $portfolio_slider__image['caption'] ); ?></p>
+				 </div>
+					<?php endforeach; ?>
+				<?php endif; ?>
               </div>
               <div class="swiper-pagination"></div>
             </div>
