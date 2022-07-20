@@ -192,5 +192,6 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+
 //hide acf custom field menu
 //add_filter('acf/settings/show_admin', '__return_false'); 

@@ -48,14 +48,16 @@ get_header();
           <div class="col-lg-4 portfolio-info">
             <h3>Project information</h3>
             <ul>
-              <li><strong>Category</strong>: Web design</li>
-              <li><strong>Client</strong>: ASU Company</li>
-              <li><strong>Project date</strong>: 01 March, 2020</li>
-              <li><strong>Project URL</strong>: <a href="#">www.example.com</a></li>
-            </ul>
-
+             <?php if ( have_rows( 'portfolio_project_info' ) ) : ?>
+				<?php while ( have_rows( 'portfolio_project_info' ) ) : the_row(); ?>
+					 <li><strong><?php the_sub_field( 'project_info_title' ); ?></strong>: <?php the_sub_field( 'porject_info_desc_' ); ?></li>
+				<?php endwhile; ?>
+					<?php else : ?>
+						<?php // no rows found ?>
+					<?php endif; ?>
+	            </ul>
             <p>
-              Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Voluptatem officia accusantium nesciunt est omnis tempora consectetur dignissimos. Sequi nulla at esse enim cum deserunt eius.
+              <?php the_content(); ?>
             </p>
           </div>
 

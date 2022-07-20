@@ -23,3 +23,30 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 .interests .icon-box i{
 	color: #18d26e;
 }
+#send-msg{
+	background: #18d26e;
+  border: 0;
+  padding: 10px 30px;
+  color: #fff;
+  transition: 0.4s;
+  border-radius: 4px;
+}
+#send-msg:hover {
+	background: #15bb62;
+}
+@-webkit-keyframes animate-loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes animate-loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
