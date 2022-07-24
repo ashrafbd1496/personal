@@ -34,19 +34,36 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 #send-msg:hover {
 	background: #15bb62;
 }
-@-webkit-keyframes animate-loading {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+.counts .count-box i {
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 24px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 24px;
+    border-radius: 50%;
+    line-height: 1;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-@keyframes animate-loading {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
+ @media only screen and (min-width : 768px) {
+    .counts .count-box{
+        margin-bottom: 50px;
+    }
+    }
+     @media only screen and (min-width : 320px) {
+         .counts .count-box{
+        margin-bottom: 50px;
+    }
+    }
+
+    /* Extra Small Devices, Phones */ 
+    @media only screen and (min-width : 480px) {
+ .counts .count-box{
+        margin-bottom: 50px;
+    }
+    }

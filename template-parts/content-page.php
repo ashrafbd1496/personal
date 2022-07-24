@@ -359,56 +359,43 @@
       </div>
 
       <div class="row mt-2">
+        <?php if ( have_rows( 'contact_', 'option' ) ) : ?>
+          <?php while ( have_rows( 'contact_', 'option' ) ) : the_row(); ?>
 
-        <div class="col-md-6 d-flex align-items-stretch">
-          <div class="info-box">
-            <i class="bx bx-map"></i>
-            <h3>My Address</h3>
-            <p>A108 Adam Street, New York, NY 535022</p>
+              <div class="col-md-6 mb-4 d-flex align-items-stretch">
+                <div class="info-box">
+                 <?php the_sub_field( 'icon' ); ?>
+                  <h3> <?php the_sub_field( 'c_title' ); ?></h3>
+                  <p> <?php the_sub_field( 'c_details' ); ?></p>
+                </div>
+              </div>
+
+              <?php endwhile; ?>
+            <?php else : ?>
+              <?php // no rows found ?>
+            <?php endif; ?>
+
+          <div class="col-md-6 mt-4 mt-md-0 align-items-stretch">
+            <div class="info-box">
+           <?php the_field( 'contact_social_icon', 'option' ); ?>
+               <h3><?php the_field( 'contact_soical_title', 'option' ); ?></h3>
+              <div class="social-links">
+                <?php if ( have_rows( 'contact_social', 'option' ) ) : ?>
+                  <?php while ( have_rows( 'contact_social', 'option' ) ) : the_row(); ?>
+                     <a href="<?php the_sub_field( 's_icon_url' ); ?>" class="twitter"> <?php the_sub_field( 's_icon' ); ?></a>
+                  <?php endwhile; ?>
+                <?php else : ?>
+                  <?php // no rows found ?>
+                <?php endif; ?>
+              </div>
           </div>
         </div>
 
-        <div class="col-md-6 mt-4 mt-md-0 d-flex align-items-stretch">
-          <div class="info-box">
-            <i class="bx bx-share-alt"></i>
-            <h3>Social Profiles</h3>
-            <div class="social-links">
-              <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-              <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-              <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-              <a href="#" class="google-plus"><i class="bi bi-skype"></i></a>
-              <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-6 mt-4 d-flex align-items-stretch">
-          <div class="info-box">
-            <i class="bx bx-envelope"></i>
-            <h3>Email Me</h3>
-            <p>contact@example.com</p>
-          </div>
-        </div>
-        <div class="col-md-6 mt-4 d-flex align-items-stretch">
-          <div class="info-box">
-            <i class="bx bx-phone-call"></i>
-            <h3>Call Me</h3>
-            <p>+1 5589 55488 55</p>
-          </div>
-        </div>
       </div>
 
       <form action="forms/contact.php" method="post" role="form" class="php-email-form mt-4">
           <?php echo do_shortcode('[contact-form-7 id="190" title="Personal Contact fro"]'); ?>
       </form>
-      <script>
-        
-         // $.("#send-msg").addClass("contact php-email-form");
-          // $('.wpcf7-submit').addClass('contact php-email-form button[type=submit]');
-          
-
-    jQuery(\'.wpcf7-form-control [type="submit"]\').attr("type","button");       </script>
-    </div>
   </section><!-- End Contact Section -->
 
 
