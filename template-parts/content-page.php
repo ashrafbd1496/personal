@@ -278,8 +278,7 @@
       <div class="row">
         <div class="col-lg-12 d-flex justify-content-center">
           <ul id="portfolio-flters">
-          <li data-filter="*" class="filter-active">All</li>
-
+         <!--  <li data-filter="*" class="filter-active">All</li> -->
           <?php
           $terms = get_terms(
             array(
@@ -303,7 +302,7 @@
           $args = array(
             'post_type' => 'portfolio',
             'post_status' => 'publish',
-            'posts_per_page'  => 6,
+            'posts_per_page'  => 9,
             'order' => 'ASC',
           );
 
@@ -312,9 +311,10 @@
           while ($prt_items->have_posts()) : $prt_items->the_post();
             $filter = "";
             $categories = get_the_terms($post->ID, 'portfolio_category');
+            if (! empty($categories) || is_array($categories)){
             foreach($categories as $category){
               $filter =  $category->name; 
-            }
+            }}
            ?>
         <div class="col-lg-4 col-md-6 portfolio-item <?php echo $filter; ?>">
           <div class="portfolio-wrap">
@@ -342,7 +342,6 @@
       <?php endwhile; 
        wp_reset_postdata();
       ?>
-     
       </div>
 
     </div>
