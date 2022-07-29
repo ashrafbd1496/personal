@@ -48,16 +48,20 @@ if ( ! function_exists( 'personal_init' ) ) {
         ) );
 
         # Create the news categories custom taxonomy
-        register_taxonomy( 'portfolio_category', 'portfolio', array(
-            'label'        => 'Portfolio Categories',
+        register_taxonomy( 'portfolio_category', array('portfolio'), 
+            array(
+            'label'        => 'portfolio_category',
             'labels'       => array(
                 'menu_name' => __( 'Portfolio Categories', 'Personal' )
             ),
+            'all_items' => 'Category',
+            'query_var' => true,
             'rewrite'      => array(
-                'slug' => 'personal-portfolio-category'
+                'slug' => 'portfolio-category'
             ),
             'hierarchical' => true
         ) );
+        flush_rewrite_rules();
 
     }
 

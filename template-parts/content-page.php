@@ -288,10 +288,8 @@
           );
         if (! empty($terms) || is_array($terms)){
         foreach( $terms as $term ) { ?>
-           <li data-filter=".<?php echo $term->name; ?>"><?php echo  sanitize_title($term->name); ?></li>
-        <?php }} 
-        wp_reset_postdata();
-        ?>
+           <li data-filter=".<?php echo $term->slug; ?>"><?php echo  sanitize_title($term->name); ?></li>
+        <?php }} ?>
             </ul>
         </div>
       </div>
@@ -302,21 +300,23 @@
           $args = array(
             'post_type' => 'portfolio',
             'post_status' => 'publish',
-            'posts_per_page'  => 9,
+            'posts_per_page' =>6,
+            'paged' => get_query_var('paged', 1),
             'order' => 'ASC',
           );
 
           $prt_items = new WP_Query($args);
-
           while ($prt_items->have_posts()) : $prt_items->the_post();
             $filter = "";
+            $termSlug = "";
             $categories = get_the_terms($post->ID, 'portfolio_category');
             if (! empty($categories) || is_array($categories)){
             foreach($categories as $category){
               $filter =  $category->name; 
+              $termSlug = $category->slug;
             }}
            ?>
-        <div class="col-lg-4 col-md-6 portfolio-item <?php echo $filter; ?>">
+        <div class="col-lg-4 col-md-6 portfolio-item <?php echo $termSlug; ?>">
           <div class="portfolio-wrap">
             <?php
              $img_url = get_the_post_thumbnail_url($post->ID, 'post-thumbnails'); 
@@ -343,7 +343,7 @@
        wp_reset_postdata();
       ?>
       </div>
-
+    
     </div>
   </section><!-- End Portfolio Section -->
 
