@@ -1,9 +1,4 @@
-/**
-* Template Name: Personal - v4.7.0
-* Template URL: https://bootstrapmade.com/personal-free-resume-bootstrap-template/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
+
 (function() {
   "use strict";
 
@@ -186,13 +181,16 @@
   /**
    * Porfolio isotope and filter
    */
+  
   window.addEventListener('load', () => {
     let portfolioContainer = select('.portfolio-container');
     if (portfolioContainer) {
       let portfolioIsotope = new Isotope(portfolioContainer, {
         itemSelector: '.portfolio-item',
+        filter:'.woocommerce',
         layoutMode: 'fitRows'
       });
+ 
 
       let portfolioFilters = select('#portfolio-flters li', true);
 

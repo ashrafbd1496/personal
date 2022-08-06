@@ -284,11 +284,13 @@
             array(
               'taxonomy'  => 'portfolio_category',
               'hide_empty'  =>true,
+              'order' => 'DSC',
+             
             )
           );
         if (! empty($terms) || is_array($terms)){
         foreach( $terms as $term ) { ?>
-           <li data-filter=".<?php echo $term->slug; ?>"><?php echo  sanitize_title($term->name); ?></li>
+           <li data-filter=".<?php echo $term->slug; ?>"><?php echo $term->name; ?></li>
         <?php }} ?>
             </ul>
         </div>
@@ -300,9 +302,10 @@
           $args = array(
             'post_type' => 'portfolio',
             'post_status' => 'publish',
-            'posts_per_page' =>6,
+            'posts_per_page' =>-1,
             'paged' => get_query_var('paged', 1),
             'order' => 'ASC',
+
           );
 
           $prt_items = new WP_Query($args);
