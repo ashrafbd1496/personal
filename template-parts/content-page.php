@@ -395,7 +395,7 @@
 
       </div>
 
-      <form action="forms/contact.php" method="post" role="form" class="php-email-form mt-4">
+      <form action="<?php the_permalink(); ?>" method="post" role="form" class="php-email-form mt-4">
           <?php echo do_shortcode('[contact-form-7 id="190" title="Personal Contact fro"]'); ?>
       </form>
   </section><!-- End Contact Section -->
